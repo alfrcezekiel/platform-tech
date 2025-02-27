@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script> -->
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Survey Program</title>
+    <style>
+        .scores-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .score-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .score-btn:hover{
+            background-color: #0056b3;
+        }
+        .emoji{
+            font-size: 60px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .modal{
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content{
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .close-btn{
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .close-btn:hover{
+            background-color: #0056b3;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul{
+            font-family: "Arial", "sans-serif";
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+    </div>
+
+    <script type="text/babel">
+        function SurveyProgram() {
+
+            const [scores, setScores] = React.useState([]);
+            const [showModal, setShowModal] = React.useState(false);
+
+            const handleScoreClick = (score) => {
+                if (score === 5) {
+                    setShowModal(true)
+                }
+                setScores((prevScores) => [...prevScores, score])
+            }
+
+
+            const handleCloseModal = () => {
+                setShowModal(false);
+            }
+
+            return (
+                <div>
+                    <h1>Telephone Company Provider Survey</h1>
+                    <p>Rate your satisfaction with the service</p>
+                    <div className="score-buttons">
+                        <button className="score-btn" onClick={() => handleScoreClick(1)}>1</button>
+                        <button className="score-btn" onClick={() => handleScoreClick(2)}>2</button>
+                        <button className="score-btn" onClick={() => handleScoreClick(3)}>3</button>
+                        <button className="score-btn" onClick={() => handleScoreClick(4)}>4</button>
+                        <button className="score-btn" onClick={() => handleScoreClick(5)}>5</button>
+                    </div>
+
+                    <h2>Scores</h2>
+
+                    {scores.length === 0 ? (
+                        <p>No Scores yet.</p>
+                    ) : (
+                        <ul>
+                            {scores.map((scores, i) => (
+                                <li key={i}>{scores}</li>
+                            ))}
+                        </ul>
+                    )}
+
+                    {scores.includes(5) && (
+                        <div className="emoji">
+                            <span role="img" aria-label="Party emoji">🎉</span>
+                        </div>
+                    )}
+
+                    {showModal && (
+                        <div className="modal">
+                            <div className="modal-content">
+                                <h3>Thank You!</h3>
+                                <p>Your feedback is greatly appreciated!</p>
+                                <button className="close-btn" onClick={handleCloseModal}>Close</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )
+        }
+
+        const container = document.getElementById("root");
+        const root = ReactDOM.createRoot(container);
+
+        root.render(<SurveyProgram/>)
+    </script>
+</body>
+
+</html>
