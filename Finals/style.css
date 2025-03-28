@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #fbeee0; /* Soft peach background */
+}
+
+/* App Container */
+#app {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+    background-color: #fffaf3; /* Soft cream */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+    color: #6d4c41; /* Warm brown */
+    margin-bottom: 20px;
+}
+
+/* Input Container */
+#input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+input {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #d4a373; /* Soft orange border */
+    border-radius: 12px;
+    outline: none;
+    background-color: #fffaf0;
+    color: #6d4c41;
+}
+
+button {
+    width: 25%;
+    background-color: #ffad60; /* Warm orange */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 4px 8px rgba(255, 173, 96, 0.2);
+}
+
+button:hover {
+    background-color: #f78c48; /* Darker orange on hover */
+}
+
+/* Locations List */
+#locationsList {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#locationsList li {
+    background-color: #ffecd1; /* Soft peach list item */
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    color: #6d4c41;
+    box-shadow: 0 2px 5px rgba(255, 173, 96, 0.2);
+}
+
+/* Map Container */
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 16px;
+    border: 1px solid #d4a373;
+    height: 400px;
+    width: 100%;
+    display: block;
+
+}
